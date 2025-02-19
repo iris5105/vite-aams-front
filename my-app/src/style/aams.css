@@ -1,0 +1,23 @@
+ .WhiteBox{
+    background-color: white;
+ }
+ .JstLeft{
+    justify-content: left;
+ }
+ .JstRight{
+    justify-content: right;
+ }
+ .JstCenter{
+    justify-content: center;
+ }
+ .AlignLeftCenter{
+    display: flex;
+    align-items: center;
+    gap : 5px;
+ }
+ .AlignCenter{
+    display: flex;
+    align-items: center;
+    gap : 5px;
+ }
+ 
