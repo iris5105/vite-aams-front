@@ -24,7 +24,7 @@ const SeperatePage_TBR = ({ prop, children = [], onSizeChange, handleResize }) =
   }, [handleResize]);
 
   const handlePanelResize = (newSizes) => {
-    console.log('newSizes:',newSizes);
+    // console.log('newSizes:',newSizes);
     setPanelSize(newSizes);
       if (onSizeChange) {
           onSizeChange(newSizes); // bottom child에게 height 값을 전달용

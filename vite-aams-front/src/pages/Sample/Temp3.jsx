@@ -8,13 +8,13 @@ import SampleTable2 from '../../components/table/SampleTable2';
 const Temp3 = () => {
   const [wdHeight, setWdHeight] = useState(window.innerHeight);
   const [boardHeight, setBoardHeight] = useState(wdHeight);
-  const [sizes, setSizes] = useState([boardHeight * 0.5, boardHeight * 0.5]);
+  const [sizes, setSizes] = useState([]);
 
   const handleResize = () => {
     setWdHeight(window.innerHeight);
-    console.log('wdHeight: ', window.innerHeight);
+    // console.log('wdHeight: ', window.innerHeight);
     // Splitter의 각 panel의 사이즈를 측정하여 sizes 업데이트
-    const newSizes = [window.innerHeight * 0.5, window.innerHeight * 0.5];
+    const newSizes = [];
     setSizes(newSizes);
   };
 
@@ -32,14 +32,16 @@ const Temp3 = () => {
     setBoardHeight(wdHeight); // wdHeight가 변경될 때마다 tableHeight 업데이트
   }, [wdHeight]);
 
-  console.log('스플릿 패널 sizes', sizes);
+   console.log('스플릿 패널 sizes', sizes);
+   console.log('boardHeight', boardHeight);
+   console.log('handleResize', handleResize);
 
   return (
     <Layout>
       <SeperatePage_LTB prop={boardHeight} onSizeChange={setSizes} handleResize={handleResize}>
         <SampleTable1 />
         <Basicbutton size={sizes[0]-60} />
-        <SampleTable2 prop={boardHeight} size={sizes[1]-60} />
+        <SampleTable2 prop={boardHeight} size={sizes[1]} />
       </SeperatePage_LTB>
     </Layout>
   );

@@ -9,31 +9,13 @@ const SeperatePage_LTB = ({ prop, children = [], onSizeChange, handleResize }) =
     const [leftChild, topChild, bottomChild] = children;
     const bottomPanelRef = useRef(null);
   
-    // useEffect(() => {
-    //   // 윈도우 크기가 변경될 때마다 실행되는 함수
-    //   const onResize = () => {
-    //     handleResize();
-    //     const newSizes = [window.innerHeight * 0.5, window.innerHeight * 0.5];
-    //     handlePanelResize(newSizes);
-    //   };
-  
-    //   // 리사이즈 이벤트 리스너 추가
-    //   window.addEventListener('resize', onResize);
-  
-    //   // 컴포넌트가 언마운트될 때 이벤트 리스너 제거
-    //   return () => {
-    //     window.removeEventListener('resize', onResize);
-    //   };
-    // }, [handleResize]);
-  
     const handlePanelResize = (newSizes) => {
  
         onSizeChange(newSizes); // Temp3에서 setSizes를 호출하도록 전달
-        console.log('LTB 각 사이즈', newSizes)
+         console.log('LTB 각 사이즈', newSizes)
 
     };
-  
-    console.log('contentHeight', contentHeight);
+
   
     return (
       <Splitter>

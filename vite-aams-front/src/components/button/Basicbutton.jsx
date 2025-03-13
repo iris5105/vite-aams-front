@@ -123,7 +123,7 @@ function Basicbutton() {
   });
 
   const handleBtnClick = (value) => {
-      console.log(value);
+      // console.log(value);
   };
   
     return (

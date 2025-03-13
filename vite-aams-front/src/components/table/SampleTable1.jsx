@@ -157,6 +157,7 @@ const SampleTable1 = ({ size ={}}) => {
 
   useEffect(() => {
     setTableHeight(wdHeight - 115); // wdHeight가 변경될 때마다 tableHeight 업데이트
+    // console.log('SampleTable1 wdHeight 변경됨:', wdHeight - 115)
   }, [wdHeight]);
 
   useEffect(() => {
@@ -164,11 +165,6 @@ const SampleTable1 = ({ size ={}}) => {
     setTableHeight(size);
   }
   }, [size]);
-
-
-  console.log('SampleTable1 size:', size);
-  console.log('SampleTable1 TableHeight:', tableHeight);
-  
 
   return (
     <Layout>

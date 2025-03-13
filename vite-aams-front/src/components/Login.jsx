@@ -19,8 +19,8 @@ const Login = ({ onLoginSuccess }) => {
     const [password, setPassword] = useState('');
 
     const handleLogin = () => {
-        console.log('username', username);
-        console.log('password', password);
+        // console.log('username', username);
+        // console.log('password', password);
       // 로그인 로직 (예: username과 password가 올바른지 체크)
       if (username === 'admin' && password === '1111') {
         // 로그인 성공 시 sessionStorage에 로그인 상태 저장

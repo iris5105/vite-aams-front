@@ -7,14 +7,14 @@ const SeperatePage_TB = ({prop, children = [], onSizeChange}) => {
   // const bottomPanelRef = useRef(null);
 
   const handleResize = (newSizes) => {
-      if (onSizeChange) {
-          onSizeChange(newSizes); // Temp3에서 setSizes를 호출하도록 전달
-      }
-  };  
+    if (onSizeChange) {
+      onSizeChange(newSizes); // 부모 컴포넌트로 크기 변경 값 전달
+    }
+  };
 
   return (
     <Splitter layout='vertical' onResize={handleResize}>
-      <Splitter.Panel defaultSize={'50%'} min='100'>
+      <Splitter.Panel defaultSize={'50%'} min='100' style={{ overflow: 'hidden' }} >
           {topChild || <Text>Top</Text>}
       </Splitter.Panel>
       <Splitter.Panel

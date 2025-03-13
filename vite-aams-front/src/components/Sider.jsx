@@ -29,6 +29,11 @@ const items = [
         label: '상하,우',
         value: 'temp4'
       },
+      {
+        key: '0005',
+        label: '상,하',
+        value: 'temp5'
+      },
     ],
   },
   {

@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect } from 'react';
-import { Table, Flex } from 'antd';
+import { Table, Flex, Layout } from 'antd';
 import ResizeObserver from 'resize-observer-polyfill';
 
 const columns = [
@@ -100,44 +100,43 @@ const dataSource = Array.from({
   gender: 'M',
 }));
 
-const SampleTable2 = ({size}) => {
-  const [tableHeight, setTableHeight] = useState(0);
-  const [theadHeight, setTheadHeight] = useState(0);
+const SampleTable2 = ({size ={}}) => {
   const theadRef = useRef(null);
- console.log('건너온 size :',size);
- 
+  console.log('건너온 size :',size);
+    const [wdHeight, setWdHeight] = useState(window.innerHeight);
+    const [tableHeight, setTableHeight] = useState(wdHeight-210);
+  
+  
+  
   useEffect(() => {
-    const updateTableHeight = () => {
-      const windowHeight = window.innerHeight;
-      const maxTableHeight = windowHeight - 63; // 헤더, 푸터 등을 고려한 여유 공간
-      let newHeight = size - theadHeight;
-      console.log('newHeight :', newHeight);
-
-      setTableHeight(Math.min(newHeight, maxTableHeight)); // 화면을 벗어나지 않도록 제한
-      console.log('newHeight :', newHeight);
-      console.log('maxTableHeight :', maxTableHeight);
+    // 윈도우 크기가 변경될 때마다 실행되는 함수
+    const handleResize = () => {
+      setWdHeight(window.innerHeight);
     };
-
-    updateTableHeight(); // 초기 실행
-    window.addEventListener('resize', updateTableHeight);
-
+  
+    // 리사이즈 이벤트 리스너 추가
+    window.addEventListener('resize', handleResize);
+  
+    // 컴포넌트가 언마운트될 때 이벤트 리스너 제거
     return () => {
-      window.removeEventListener('resize', updateTableHeight); // 클린업
+      window.removeEventListener('resize', handleResize);
     };
+  }, []);
+
+    useEffect(() => {
+      setTableHeight(Math.min(wdHeight,size+1) - 210); // wdHeight가 변경될 때마다 tableHeight 업데이트
+    }, [wdHeight,size]);
+
+  useEffect(() => {
+    if(size > 0) {
+    setTableHeight(size-210);
+  }
   }, [size]);
 
-  useEffect(() => {
-    if (theadRef.current) {
-      const theadHeight = theadRef.current.offsetHeight;
-      setTheadHeight(theadHeight);
-      console.log('theadHeight:', theadHeight);
-    }
-  }, []);
-console.log('theadHeight :', theadHeight);
 
-console.log('setSized:', tableHeight);
-
+  console.log('setSized:', tableHeight);
   return (
+    <Layout>
       <Table
         pagination={false}
         columns={columns}
@@ -148,12 +147,13 @@ console.log('setSized:', tableHeight);
           },
         }}
         size="small"
-         style={{ height:tableHeight,}}
+        //  style={{ height:tableHeight,}}
         scroll={{
           x: 'max-content',
           y: tableHeight, // 여기서 부모 컴포넌트의 높이를 기반으로 y 값을 설정
         }}
       />
+    </Layout>
   );
 };
 export default SampleTable2;
