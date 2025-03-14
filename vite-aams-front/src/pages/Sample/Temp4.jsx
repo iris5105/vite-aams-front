@@ -7,34 +7,39 @@ import Basicbutton from '../../components/button/Basicbutton';
 import SeperatePage_TBR from '../../temp/SeperatePage_TBR';
 
 const Temp4 = () => {
-  const [wdHeight, setWdHeight] = useState(window.innerHeight);
-  const [boardHeight, setBoardHeight] = useState(wdHeight);
-  const [sizes, setSizes] = useState([(boardHeight * 0.5),(boardHeight * 0.5)]);
-
-  const handleResize = () => {
-    setWdHeight(window.innerHeight);
-    console.log('wdHeight: ', window.innerHeight);
-    // Splitter의 각 panel의 사이즈를 측정하여 sizes 업데이트
-    const newSizes = [window.innerHeight * 0.5, window.innerHeight * 0.5];
-    setSizes(newSizes);
-  };
-
+  const [sizeArr, setSizeArr] = useState([50, 50]); // 초기 비율 50:50
+  const [topPanelSize, setTopPanelSize] = useState(0);
+  const [bottomPanelSize, setBottomPanelSize] = useState(0);
+  const handleSplitter = (newSizes) => {
+    setSizeArr(newSizes);
+  }
+  // 패널 사이즈 변경 또는 윈도우 크기 변경시 호출출
   useEffect(() => {
-    setBoardHeight(wdHeight); // wdHeight가 변경될 때마다 tableHeight 업데이트
-  }, [window.innerHeight]);
+    // 패널 사이즈 업데이트트
+    const updatePanelSizes = () => {
+      setTimeout(() => {  //setTimeout을 사용하여 렌더링이 완료된 후에 실행되도록 함
+      const topPanel = document.querySelector('.topPanel');       //상부 패널 객체 선언
+      const bottomPanel = document.querySelector('.bottomPanel'); //하부 패널 객체 선언
+        setTopPanelSize(topPanel.clientHeight);
+        setBottomPanelSize(bottomPanel.clientHeight);  
+      },10)
+    };
 
-console.log('sizes',sizes);
+    updatePanelSizes();
+    window.addEventListener('resize', updatePanelSizes);
 
+    return () => {
+      window.removeEventListener('resize', updatePanelSizes);
+    };
+  }, [sizeArr,window.innerHeight]);
+ console.log(topPanelSize,bottomPanelSize)
   return (
-    <Layout>
-      <SeperatePage_TBR prop = {boardHeight} onSizeChange={setSizes} handleResize={handleResize}>
-        <SampleTable1 size={(sizes[0]-55)}/>
-        {/* <SampleTable1 style={{height : sizes[0]}}/> */}
-        <SampleTable2 size={sizes[1]-60}/>
-        {/* <SampleTable2 style={{height : sizes[1]}}/> */}
+      <SeperatePage_TBR  onSizeChange={handleSplitter} >
+        <SampleTable1 size={topPanelSize}/>
+        <SampleTable2 size={bottomPanelSize}/>
         <Basicbutton />
       </SeperatePage_TBR>
-    </Layout>
+
   );
 };
 

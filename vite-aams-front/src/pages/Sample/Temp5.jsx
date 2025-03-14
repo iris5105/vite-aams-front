@@ -4,31 +4,36 @@ import SampleTable3 from '../../components/table/SampleTable3'
 import SampleTable4 from '../../components/table/SampleTable4'
 
 const Temp5 = ({columns,data}) => {
-    const getWindowHeight = () => window.innerHeight;      //header의 높이를 제외한 전체 화면의 높이
-    const  [panelSizes, setPanelSizes] = useState([getWindowHeight() /2, getWindowHeight()/2])
+  const [sizeArr, setSizeArr] = useState([50, 50]); // 초기 비율 50:50
+  const [topPanelSize, setTopPanelSize] = useState(0);
+  const [bottomPanelSize, setBottomPanelSize] = useState(0);
+  const handleSplitter = (newSizes) => {
+    setSizeArr(newSizes);
+  }
+  // 패널 사이즈 변경 또는 윈도우 크기 변경시 호출출
+  useEffect(() => {
+    // 패널 사이즈 업데이트트
+    const updatePanelSizes = () => {
+      setTimeout(() => {  //setTimeout을 사용하여 렌더링이 완료된 후에 실행되도록 함
+      const topPanel = document.querySelector('.topPanel');       //상부 패널 객체 선언
+      const bottomPanel = document.querySelector('.bottomPanel'); //하부 패널 객체 선언
+        setTopPanelSize(topPanel.clientHeight);
+        setBottomPanelSize(bottomPanel.clientHeight);  
+      },10)
+    };
 
-    useEffect(() => {
-        const handleResize = () => {
-          const newHeight = getWindowHeight()-10;
-          setPanelSizes([newHeight / 2, newHeight / 2]);
-          console.log('높이 변경에 따른 panel 사이즈 배분',newHeight,newHeight/2)
-        };
-    
-        window.addEventListener("resize", handleResize);
-        return () => {
-          window.removeEventListener("resize", handleResize);
-        };
-      }, []);
+    updatePanelSizes();
+    window.addEventListener('resize', updatePanelSizes);
 
-    const handleSizeChange = (newSizes) => {
-        setPanelSizes(newSizes);
-        console.log('넘어온 패널 사이즈',newSizes)
-      };
-      console.log('넘길 테이블 사이즈',panelSizes)
+    return () => {
+      window.removeEventListener('resize', updatePanelSizes);
+    };
+  }, [sizeArr,window.innerHeight]);
+  
   return (
-    <SeperatePage_TB onSizeChange={handleSizeChange}>
-        <SampleTable3 column={columns} data={data} size={panelSizes[0]}/>
-        <SampleTable4 column={columns} data={data} size={panelSizes[1]}/>
+    <SeperatePage_TB onSizeChange={handleSplitter}>
+        <SampleTable3 column={columns} data={data} size={topPanelSize}/>
+        <SampleTable4 column={columns} data={data} size={bottomPanelSize}/>
     </SeperatePage_TB>
   )
 }
