@@ -133,51 +133,31 @@ const dataSource = Array.from({
   age: 32,
   address: `London, Park Lane no. ${i}`,
 }));
-const SampleTable1 = ({ size ={}}) => {
-
-    const [wdHeight, setWdHeight] = useState(window.innerHeight);
-    const [tableHeight, setTableHeight] = useState(wdHeight-63);
-  
-  
-  
-  useEffect(() => {
-    // 윈도우 크기가 변경될 때마다 실행되는 함수
-    const handleResize = () => {
-      setWdHeight(window.innerHeight);
-    };
-  
-    // 리사이즈 이벤트 리스너 추가
-    window.addEventListener('resize', handleResize);
-  
-    // 컴포넌트가 언마운트될 때 이벤트 리스너 제거
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []);
-
-  useEffect(() => {
-    setTableHeight(wdHeight - 115); // wdHeight가 변경될 때마다 tableHeight 업데이트
-    // console.log('SampleTable1 wdHeight 변경됨:', wdHeight - 115)
-  }, [wdHeight]);
-
-  useEffect(() => {
-    if(size > 0) {
-    setTableHeight(size);
-  }
-  }, [size]);
-
+const SampleTable1 = ({ size }) => {
+    const [theaderHeight, setTheaderHeight] = useState(null);       //테이블 헤더 영역
+    const tableRef = useRef(null); // 테이블을 참조할 ref 생성
+    useEffect(() => {
+      setTimeout(() => {
+        if (tableRef.current) {
+          const theader = tableRef.current.querySelector(".ant-table-thead tr"); // tbody의 첫 번째 tr 선택
+          if (theader) {
+            setTheaderHeight(theader.clientHeight);
+          }
+        }
+      }, 80);
+    }, []);
   return (
-    <Layout>
+    <div ref={tableRef}>
         <Table
           pagination={false}
           columns={columns}
           dataSource={dataSource}
           scroll={{
             x: 'max-content',
-            y : tableHeight
+            y : size - theaderHeight
           }}
         />
-    </Layout>
+    </div>
   );
 };
 

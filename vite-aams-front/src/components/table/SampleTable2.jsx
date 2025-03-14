@@ -22,60 +22,40 @@ const columns = [
     onFilter: (value, record) => record.name.indexOf(value) === 0,
   },
   {
-    title: 'Other',
-    children: [
-      {
-        title: 'Age',
-        dataIndex: 'age',
-        key: 'age',
-        width: 150,
-        sorter: (a, b) => a.age - b.age,
-      },
-      {
-        title: 'Address',
-        children: [
-          {
-            title: 'Street',
-            dataIndex: 'street',
-            key: 'street',
-            width: 150,
-          },
-          {
-            title: 'Block',
-            children: [
-              {
-                title: 'Building',
-                dataIndex: 'building',
-                key: 'building',
-                width: 100,
-              },
-              {
-                title: 'Door No.',
-                dataIndex: 'number',
-                key: 'number',
-                width: 100,
-              },
-            ],
-          },
-        ],
-      },
-    ],
+    title: 'Age',
+    dataIndex: 'age',
+    key: 'age',
+    width: 150,
+    sorter: (a, b) => a.age - b.age,
   },
   {
-    title: 'Company',
-    children: [
-      {
-        title: 'Company Address',
-        dataIndex: 'companyAddress',
-        key: 'companyAddress',
-        width: 200,
-      },
-      {
-        title: 'Company Name',
-        dataIndex: 'companyName',
-        key: 'companyName',
-      },
-    ],
+    title: 'Street',
+    dataIndex: 'street',
+    key: 'street',
+    width: 150,
+  },
+  {
+    title: 'Building',
+    dataIndex: 'building',
+    key: 'building',
+    width: 100,
+  },
+  {
+    title: 'Door No.',
+    dataIndex: 'number',
+    key: 'number',
+    width: 100,
+  },
+  {
+    title: 'Company Address',
+    dataIndex: 'companyAddress',
+    key: 'companyAddress',
+    width: 200,
+  },
+  {
+    title: 'Company Name',
+    dataIndex: 'companyName',
+    key: 'companyName',
   },
   {
     title: 'Gender',
@@ -100,60 +80,33 @@ const dataSource = Array.from({
   gender: 'M',
 }));
 
-const SampleTable2 = ({size ={}}) => {
-  const theadRef = useRef(null);
-  console.log('건너온 size :',size);
-    const [wdHeight, setWdHeight] = useState(window.innerHeight);
-    const [tableHeight, setTableHeight] = useState(wdHeight-210);
-  
-  
-  
-  useEffect(() => {
-    // 윈도우 크기가 변경될 때마다 실행되는 함수
-    const handleResize = () => {
-      setWdHeight(window.innerHeight);
-    };
-  
-    // 리사이즈 이벤트 리스너 추가
-    window.addEventListener('resize', handleResize);
-  
-    // 컴포넌트가 언마운트될 때 이벤트 리스너 제거
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []);
-
+const SampleTable2 = ({size}) => {
+    const [theaderHeight, setTheaderHeight] = useState(null);       //테이블 헤더 영역
+    const tableRef = useRef(null); // 테이블을 참조할 ref 생성
     useEffect(() => {
-      setTableHeight(Math.min(wdHeight,size+1) - 210); // wdHeight가 변경될 때마다 tableHeight 업데이트
-    }, [wdHeight,size]);
-
-  useEffect(() => {
-    if(size > 0) {
-    setTableHeight(size-210);
-  }
-  }, [size]);
-
-
-  console.log('setSized:', tableHeight);
+      setTimeout(() => {
+        if (tableRef.current) {
+          const theader = tableRef.current.querySelector(".ant-table-thead tr"); // tbody의 첫 번째 tr 선택
+          console.log(theader);
+          if (theader) {
+            setTheaderHeight(theader.clientHeight);
+          }
+        }
+      }, 80);
+    }, []);
   return (
-    <Layout>
+    <div ref={tableRef}>
       <Table
         pagination={false}
         columns={columns}
         dataSource={dataSource}
-        components={{
-          header: {
-            wrapper: (props) => <thead ref={theadRef} {...props} />,
-          },
-        }}
         size="small"
-        //  style={{ height:tableHeight,}}
         scroll={{
           x: 'max-content',
-          y: tableHeight, // 여기서 부모 컴포넌트의 높이를 기반으로 y 값을 설정
+          y: size - theaderHeight, 
         }}
-      />
-    </Layout>
+      /> 
+    </div>
   );
 };
 export default SampleTable2;
