@@ -6,7 +6,7 @@ body{
 /* 테이블 내 th와td 동시 변경 */
 .ant-table th,
 .ant-table td {
-  font-size: 15px; /* 원하는 크기로 조절 */
+  font-size: 13px; /* 원하는 크기로 조절 */
 }
 /* 테이블 th 공통 css */ 
 .ant-table th {
@@ -19,16 +19,27 @@ body{
 /* 테이블 내 cell 공통 css */
 .ant-table-cell{
   padding :  4px !important;
-  border-bottom : 2px solid #919191 !important;
+  border-bottom : 1px solid #919191 !important;
+  
 }
 /* data-row-key 값이 짝수인 경우 */
 tr[data-row-key]:nth-child(even) {
-  background: white !important; /* 흰색 */
+  background: white; /* 흰색 */
 }
 
 /* data-row-key 값이 홀수인 경우 */
 tr[data-row-key]:nth-child(odd) {
-  background: #7e6f6f !important; /* 연한 회색 */
+  background: #d4d4d4 ; /* 연한 회색 */
 }
+
+.ant-table-cell-fix-right,
+.ant-table-cell-fix-left{
+  background : none !important;
+}
+
+.ant-table-cell-row-hover{
+  background : #79c3ff !important;
+}
+
 
 /*********************************  Table CSS *********************************/
