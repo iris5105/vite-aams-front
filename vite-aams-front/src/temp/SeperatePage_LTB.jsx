@@ -4,33 +4,25 @@ import { ContentHeightContext } from '../style/ContentHeightContext';
 const {Text} = Typography;
 
 // 좌우 분할 후 우측 상하 분할 컴포넌트
-const SeperatePage_LTB = ({ prop, children = [], onSizeChange, handleResize }) => {
-    const contentHeight = useContext(ContentHeightContext);
+const SeperatePage_LTB = ({ children = [], onSizeChange }) => {
     const [leftChild, topChild, bottomChild] = children;
-    const bottomPanelRef = useRef(null);
-  
-    const handlePanelResize = (newSizes) => {
- 
-        onSizeChange(newSizes); // Temp3에서 setSizes를 호출하도록 전달
-         console.log('LTB 각 사이즈', newSizes)
+    const handleResize = (newSizes) => {
+      onSizeChange(newSizes); // 부모 컴포넌트로 크기 변경 값 전달
+  };
 
-    };
-
-  
     return (
       <Splitter>
-        <Splitter.Panel min='100' style={{ height: prop }}>
+        <Splitter.Panel className="leftPanel" min='100' >
           {leftChild || <Text>Left</Text>}
         </Splitter.Panel>
-        <Splitter.Panel min='100' style={{ height: prop, overflow: 'hidden' }}>
-          <Splitter id='verticalSplitter' layout='vertical' onResize={handlePanelResize} style={{ overflow: 'hidden' }}>
-            <Splitter.Panel defaultSize={'50%'} min='100'>
+        <Splitter.Panel min='100' style={{ overflow: 'hidden' }}>
+          <Splitter id='verticalSplitter' layout='vertical' onResize={handleResize} style={{ overflow: 'hidden' }}>
+            <Splitter.Panel className="topPanel" defaultSize={'50%'} min='100'>
               {topChild || <Text>Top</Text>}
             </Splitter.Panel>
             <Splitter.Panel
-              id='BottomPanel'
+              className="bottomPanel"
               defaultSize={'50%'}
-              ref={bottomPanelRef} // Reference the BottomPanel
               style={{ overflow: 'hidden' }}
               min='100'
             >

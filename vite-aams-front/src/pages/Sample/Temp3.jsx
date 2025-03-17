@@ -6,44 +6,40 @@ import SampleTable1 from '../../components/table/SampleTable1';
 import SampleTable2 from '../../components/table/SampleTable2';
 
 const Temp3 = () => {
-  const [wdHeight, setWdHeight] = useState(window.innerHeight);
-  const [boardHeight, setBoardHeight] = useState(wdHeight);
-  const [sizes, setSizes] = useState([]);
-
-  const handleResize = () => {
-    setWdHeight(window.innerHeight);
-    // console.log('wdHeight: ', window.innerHeight);
-    // Splitter의 각 panel의 사이즈를 측정하여 sizes 업데이트
-    const newSizes = [];
-    setSizes(newSizes);
-  };
-
+  const [sizeArr, setSizeArr] = useState([50, 50]); // 초기 비율 50:50
+  const [leftPanelSize, setLeftPanelSize] = useState(0);
+  const [topPanelSize, setTopPanelSize] = useState(0);
+  const [bottomPanelSize, setBottomPanelSize] = useState(0);
+  const handleSplitter = (newSizes) => {
+    setSizeArr(newSizes);
+  }
+  // 패널 사이즈 변경 또는 윈도우 크기 변경시 호출출
   useEffect(() => {
-    // 윈도우 크기가 변경될 때마다 실행되는 함수
-    window.addEventListener('resize', handleResize);
-
-    // 컴포넌트가 언마운트될 때 이벤트 리스너 제거
-    return () => {
-      window.removeEventListener('resize', handleResize);
+    // 패널 사이즈 업데이트트
+    const updatePanelSizes = () => {
+      setTimeout(() => {  //setTimeout을 사용하여 렌더링이 완료된 후에 실행되도록 함
+      const leftPanel = document.querySelector('.leftPanel');       //상부 패널 객체 선언
+      const topPanel = document.querySelector('.topPanel');       //상부 패널 객체 선언
+      const bottomPanel = document.querySelector('.bottomPanel'); //하부 패널 객체 선언
+        setLeftPanelSize(leftPanel.clientHeight);
+        setTopPanelSize(topPanel.clientHeight);
+        setBottomPanelSize(bottomPanel.clientHeight);  
+      },80)
     };
-  }, [ window.innerHeight]);
 
-  useEffect(() => {
-    setBoardHeight(wdHeight); // wdHeight가 변경될 때마다 tableHeight 업데이트
-  }, [wdHeight]);
+    updatePanelSizes();
+    window.addEventListener('resize', updatePanelSizes);
 
-   console.log('스플릿 패널 sizes', sizes);
-   console.log('boardHeight', boardHeight);
-   console.log('handleResize', handleResize);
-
+    return () => {
+      window.removeEventListener('resize', updatePanelSizes);
+    };
+  }, [sizeArr,window.innerHeight]);
   return (
-    <Layout>
-      <SeperatePage_LTB prop={boardHeight} onSizeChange={setSizes} handleResize={handleResize}>
-        <SampleTable1 />
-        <Basicbutton size={sizes[0]-60} />
-        <SampleTable2 prop={boardHeight} size={sizes[1]} />
+      <SeperatePage_LTB onSizeChange={handleSplitter}>
+        <SampleTable1 size={leftPanelSize}/>
+        <Basicbutton size={topPanelSize} />
+        <SampleTable2 size={bottomPanelSize} />
       </SeperatePage_LTB>
-    </Layout>
   );
 };
 
