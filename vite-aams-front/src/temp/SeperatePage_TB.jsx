@@ -2,7 +2,7 @@ import React,{useState} from 'react';
 import { Splitter,  Typography } from 'antd'
 const { Text } = Typography;
 
-const SeperatePage_TB = ({prop, children = [], onSizeChange}) => {
+const SeperatePage_TB = ({ children = [], onSizeChange}) => {
   const [ topChild, bottomChild] = children;
   const handleResize = (newSizes) => {
       onSizeChange(newSizes); // 부모 컴포넌트로 크기 변경 값 전달
