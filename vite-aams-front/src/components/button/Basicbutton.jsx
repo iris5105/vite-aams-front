@@ -127,7 +127,7 @@ function Basicbutton() {
   };
   
     return (
-      <Flex horizontal={true} gap="small" style={{borderBottom : " 1px solid ", padding : '5px'}}>
+      <Flex horizontal="true" gap="small" style={{borderBottom : " 1px solid ", padding : '5px'}}>
         {buttonsToDisplay.map((button) => (
           <Button className='CommonBtn' style={{ width : 60}} key={button.key} onClick={()=>handleBtnClick(button.label)}>{button.label}</Button>
         ))}

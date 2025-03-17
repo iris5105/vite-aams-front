@@ -30,18 +30,18 @@ const Header = ({onToggleSider}) => {
                 paddingRight : '10px'
              }}
         >
-            <Flex horizontal={true} justify='space-between' align='center'>
-                <Flex horizontal={true} justify='flex-start' align='center'  >
-                    <Flex horizontal={true} justify='flex-start' align='center' onClick={handleLogo}>
+            <Flex horizontal="true" justify='space-between' align='center'>
+                <Flex horizontal="true" justify='flex-start' align='center'  >
+                    <Flex horizontal="true" justify='flex-start' align='center' onClick={handleLogo}>
                         <Title  level = {2} italic style={{color : 'yellow', marginTop : '10px'}}>A</Title>
                         <Title  level = {4} style={{color : 'white', marginTop : '10px'}}>dvanced Asset Management System.</Title>
                     </Flex>
                 </Flex>
-                <Flex horizontal={true} justify='flex-start' align='center'>
+                <Flex horizontal="true" justify='flex-start' align='center'>
                     <Text style={{color : 'white'}}>사용자 </Text>
                     <Text style={{color : 'white'}}>님반갑습니다.</Text>
                 </Flex>
-                <Flex horizontal={true} justify='flex-start' align='center'>
+                <Flex horizontal="true" justify='flex-start' align='center'>
                     {/* onClick에서 함수 호출을 인라인으로 처리 */}
                     <div id='Logout' onClick={handleLogOut}>
                         <UserOutlined style={{ fontSize : '18px',color : 'white'}}/>
