@@ -4,8 +4,10 @@ import SeperatePage_LTB from '../../temp/SeperatePage_LTB';
 import Basicbutton from '../../components/button/Basicbutton';
 import SampleTable1 from '../../components/table/SampleTable1';
 import SampleTable2 from '../../components/table/SampleTable2';
+import { ssrModuleExportsKey } from 'vite/module-runner';
 
-const Temp3 = () => {
+const Temp3 = ({props}) => {
+  const [sample1, sample2] = props;
   const [sizeArr, setSizeArr] = useState([50, 50]); // 초기 비율 50:50
   const [leftPanelSize, setLeftPanelSize] = useState(0);
   const [topPanelSize, setTopPanelSize] = useState(0);
@@ -23,7 +25,7 @@ const Temp3 = () => {
       const bottomPanel = document.querySelector('.bottomPanel'); //하부 패널 객체 선언
         setLeftPanelSize(leftPanel.clientHeight);
         setTopPanelSize(topPanel.clientHeight);
-        setBottomPanelSize(bottomPanel.clientHeight);  
+        setBottomPanelSize(bottomPanel.clientHeight);
       },80)
     };
 
@@ -34,11 +36,12 @@ const Temp3 = () => {
       window.removeEventListener('resize', updatePanelSizes);
     };
   }, [sizeArr,window.innerHeight]);
+  
   return (
       <SeperatePage_LTB onSizeChange={handleSplitter}>
-        <SampleTable1 size={leftPanelSize}/>
+        <SampleTable1 size={leftPanelSize} prop={sample1}/>
         <Basicbutton size={topPanelSize} />
-        <SampleTable2 size={bottomPanelSize} />
+        <SampleTable2 size={bottomPanelSize}  prop={sample2}/>
       </SeperatePage_LTB>
   );
 };

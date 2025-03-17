@@ -6,7 +6,8 @@ import Basicbutton from '../../components/button/Basicbutton';
 
 import SeperatePage_TBR from '../../temp/SeperatePage_TBR';
 
-const Temp4 = () => {
+const Temp4 = ({props}) => {
+  const [sample1, sample2] = props;
   const [sizeArr, setSizeArr] = useState([50, 50]); // 초기 비율 50:50
   const [topPanelSize, setTopPanelSize] = useState(0);
   const [bottomPanelSize, setBottomPanelSize] = useState(0);
@@ -33,10 +34,11 @@ const Temp4 = () => {
     };
   }, [sizeArr,window.innerHeight]);
  console.log(topPanelSize,bottomPanelSize)
+
   return (
       <SeperatePage_TBR  onSizeChange={handleSplitter} >
-        <SampleTable1 size={topPanelSize}/>
-        <SampleTable2 size={bottomPanelSize}/>
+        <SampleTable1 size={topPanelSize} prop={sample1}/>
+        <SampleTable2 size={bottomPanelSize} prop={sample2}/>
         <Basicbutton />
       </SeperatePage_TBR>
 

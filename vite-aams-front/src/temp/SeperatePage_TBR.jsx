@@ -4,7 +4,7 @@ import ColumnGroup from 'antd/es/table/ColumnGroup';
 
 const { Text } = Typography;
 
-const SeperatePage_TBR = ({ prop, children = [], onSizeChange }) => {
+const SeperatePage_TBR = ({ children = [], onSizeChange }) => {
   const [topChild, bottomChild, rightChild] = children;
   const handleResize = (newSizes) => {
       onSizeChange(newSizes); // 부모 컴포넌트로 크기 변경 값 전달
@@ -12,7 +12,7 @@ const SeperatePage_TBR = ({ prop, children = [], onSizeChange }) => {
 
   return (
   <Splitter>
-    <Splitter.Panel min='100' style={{ height: prop, overflow: 'hidden' }}>
+    <Splitter.Panel min='100' style={{ overflow: 'hidden' }}>
         <Splitter layout='vertical' onResize={handleResize} style={{ overflow: 'hidden' }} >
             <Splitter.Panel
                 className="topPanel"
@@ -33,7 +33,7 @@ const SeperatePage_TBR = ({ prop, children = [], onSizeChange }) => {
         </Splitter>
     </Splitter.Panel>
 
-    <Splitter.Panel min='100' style={{ height: prop }}>
+    <Splitter.Panel min='100'>
         {rightChild || <Text>Right</Text>}
     </Splitter.Panel>
   </Splitter>

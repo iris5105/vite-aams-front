@@ -12,7 +12,7 @@ const SeperatePage_LTB = ({ children = [], onSizeChange }) => {
 
     return (
       <Splitter>
-        <Splitter.Panel className="leftPanel" min='100' >
+        <Splitter.Panel className="leftPanel" min='100' style={{ overflow: 'hidden' }}>
           {leftChild || <Text>Left</Text>}
         </Splitter.Panel>
         <Splitter.Panel min='100' style={{ overflow: 'hidden' }}>
