@@ -4,17 +4,16 @@ import { Table, Layout } from 'antd';
 const columns = [
   {
     title: 'Full Name',
-    width: 100,
     dataIndex: 'name',
     key: 'name',
     fixed: 'left',
+    sorter: true,
   },
   {
     title: 'Age',
-    width: 100,
+    width: 80,
     dataIndex: 'age',
     key: 'age',
-    fixed: 'left',
     sorter: true,
   },
   {
@@ -120,7 +119,6 @@ const columns = [
   {
     title: 'Action',
     key: 'operation',
-    fixed: 'right',
     width: 100,
     render: () => <a>action</a>,
   },

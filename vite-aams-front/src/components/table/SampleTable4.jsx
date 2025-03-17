@@ -23,6 +23,7 @@ const SampleTable4 = ({column, data, size}) => {
               pagination={false}
               columns={column}
               dataSource={data}
+              size = "small"
               scroll={{
                 x : 'max-content',
                 y: size - theaderHeight

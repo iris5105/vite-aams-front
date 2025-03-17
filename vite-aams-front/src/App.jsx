@@ -41,17 +41,15 @@ function App() {
     title : '현금종류',
     dataIndex : 'cash_cd',
     key : 'cash_cd',
-    width: 100,
   },{
      title : '관리번호',
      dataIndex : 'fnd_cd',
      key : 'fnd_cd',
-     width: 100,
+     width : 90,
   },{
     title : '계좌명',
     dataIndex : 'xx_fund_cd',
     key : 'xx_fund_cd',
-    width: 100,
   },{
     title : '발행일',
     dataIndex : 'balh_ymd',
