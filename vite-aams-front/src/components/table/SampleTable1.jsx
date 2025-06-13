@@ -19,7 +19,7 @@ const SampleTable1 = ({ size }) => {
       key: 'name',
       width: 100,
       fixed: 'left',
-      filters: data1.map(item => ({
+      filters: data.map(item => ({
         text: item.name,
         value: item.name,
       })), // 데이터에서 고유한 이름들을 필터 옵션으로 설정
