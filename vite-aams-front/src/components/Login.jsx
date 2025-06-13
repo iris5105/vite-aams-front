@@ -19,15 +19,26 @@ const Login = ({ onLoginSuccess }) => {
     const [password, setPassword] = useState('');
 
     const handleLogin = () => {
-      if (username === 'admin' && password === '1111') {
-        // 로그인 성공 시 sessionStorage에 로그인 상태 저장
-        sessionStorage.setItem('isLoggedIn', 'true');
-        onLoginSuccess();  // 부모 컴포넌트에게 로그인 성공을 알림
-        navigate('/main');  // 메인 페이지로 이동
-      } else {
-        alert('잘못된 로그인 정보입니다.');
-      }
-    };
+        if (username === 'admin' && password === '1111') {
+          // 로그인 성공 시 sessionStorage에 로그인 상태 저장
+          sessionStorage.setItem('isLoggedIn', 'true');
+          onLoginSuccess();  // 부모 컴포넌트에게 로그인 성공을 알림
+          navigate('/main');  // 메인 페이지로 이동
+        } else {
+          alert('잘못된 로그인 정보입니다.');
+        }
+      };
+
+    // const handleLogin = () => {
+    //   if (username === 'admin' && password === '1111') {
+    //     // 로그인 성공 시 sessionStorage에 로그인 상태 저장
+    //     sessionStorage.setItem('isLoggedIn', 'true');
+    //     onLoginSuccess();  // 부모 컴포넌트에게 로그인 성공을 알림
+    //     navigate('/main');  // 메인 페이지로 이동
+    //   } else {
+    //     alert('잘못된 로그인 정보입니다.');
+    //   }
+    // };
 
 return(
     <Flex style = {{height : '100vh'}} vertical={true} justify = {'center'} align = {'center'}>

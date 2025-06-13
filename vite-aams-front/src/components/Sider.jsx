@@ -10,6 +10,11 @@ const items = [
     icon: <MailOutlined />,
     children: [
       {
+        key: '0000',
+        label: '공통컴포넌트',
+        value: 'temp6'
+      },
+      {
         key: '0001',
         label: '화면 분할1',
         value: 'temp1'
@@ -34,6 +39,7 @@ const items = [
         label: '상,하',
         value: 'temp5'
       },
+
     ],
   },
   {

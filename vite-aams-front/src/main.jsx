@@ -1,5 +1,7 @@
 import { StrictMode } from 'react'
 import ReactDOM from 'react-dom/client';
+import reportWebVitals from './reportWebVitals';
+
 import axios from 'axios'
 import './index.css'
 import App from './App.jsx'

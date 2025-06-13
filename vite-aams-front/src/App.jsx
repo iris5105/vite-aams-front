@@ -14,6 +14,7 @@ import Temp2 from './pages/Sample/Temp2';
 import Temp3 from './pages/Sample/Temp3';
 import Temp4 from './pages/Sample/Temp4';
 import Temp5 from './pages/Sample/Temp5';
+import Temp6 from './pages/Sample/Temp6';
 import MainPage from './pages/test/MainPage';
 
 
@@ -42,7 +43,8 @@ function App() {
          {/* 로그인 후 화면 */}
          <Route
           path="/"
-          element={isLoggedIn ? <Main /> : <Navigate to="/login" />}
+          // element={isLoggedIn ? <Main /> : <Navigate to="/login" />}
+          element ={<Main />}
         >
          {/* <Route path="/" element={ <Main />}> */}
           {/* 추가적인 경로를 정의 */}
@@ -56,6 +58,7 @@ function App() {
           <Route path="temp3" element={<Temp3 />} />
           <Route path="temp4" element={<Temp4 />} />
           <Route path="temp5" element={<Temp5 />} />
+          <Route path="temp6" element={<Temp6 />} />
         </Route>
       </Routes>
     </BrowserRouter>
