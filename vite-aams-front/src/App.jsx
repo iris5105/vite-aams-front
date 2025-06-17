@@ -15,6 +15,7 @@ import Temp3 from './pages/Sample/Temp3';
 import Temp4 from './pages/Sample/Temp4';
 import Temp5 from './pages/Sample/Temp5';
 import Temp6 from './pages/Sample/Temp6';
+import Temp7 from './pages/Sample/Temp7';
 import MainPage from './pages/test/MainPage';
 
 
@@ -59,6 +60,7 @@ function App() {
           <Route path="temp4" element={<Temp4 />} />
           <Route path="temp5" element={<Temp5 />} />
           <Route path="temp6" element={<Temp6 />} />
+          <Route path="temp7" element={<Temp7 />} />
         </Route>
       </Routes>
     </BrowserRouter>

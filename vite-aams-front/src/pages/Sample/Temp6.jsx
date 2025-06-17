@@ -3,14 +3,14 @@ import { Layout , Typography} from 'antd';
 import BscDatePicker from '../../components/datePicker/BasicDatePicker';
 import RangeDatePicker from '../../components/datePicker/RangeDatePicker';
 import BscBtn from '../../components/button/Basicbutton';
-import Filter from '../../components/filters/Filter'
+import Filter from '../../components/filters/Filter_1'
 
 const { Text } = Typography;
-export const MainPage = () => {
+export const Temp6 = () => {
   return (
 
     <Layout style = {{ height : '100%'}}>
-        {/* <Layout style={{width : 300 }} > */}
+         <Layout style={{width : 300 }} > 
             <Text id="Example">Components Sample</Text>
             <Text>Button</Text>
             <BscBtn/>
@@ -19,8 +19,8 @@ export const MainPage = () => {
             <Text>일자 기간 선택</Text>
             <RangeDatePicker/>
             <Filter/>
-        {/* </Layout> */}
+         </Layout>
     </Layout>
   )
 }
-export default MainPage
+export default Temp6
