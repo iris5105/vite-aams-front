@@ -44,7 +44,11 @@ const items = [
         label: '상좌상하',
         value: 'temp7'
       },
-
+      {
+        key: '0007',
+        label: '좌우,하',
+        value: 'temp8'
+      },
     ],
   },
   {

@@ -16,6 +16,7 @@ import Temp4 from './pages/Sample/Temp4';
 import Temp5 from './pages/Sample/Temp5';
 import Temp6 from './pages/Sample/Temp6';
 import Temp7 from './pages/Sample/Temp7';
+import Temp8 from './pages/Sample/Temp8';
 import MainPage from './pages/test/MainPage';
 
 
@@ -61,6 +62,11 @@ function App() {
           <Route path="temp5" element={<Temp5 />} />
           <Route path="temp6" element={<Temp6 />} />
           <Route path="temp7" element={<Temp7 />} />
+          <Route path="temp8" element={<Temp8 />} />
+          {/* <Route path="temp9" element={<Temp9 />} /> */}
+          {/* <Route path="temp10" element={<Temp10 />} /> */}
+          {/* <Route path="temp11" element={<Temp11 />} /> */}
+          {/* <Route path="temp12" element={<Temp12 />} /> */}
         </Route>
       </Routes>
     </BrowserRouter>
