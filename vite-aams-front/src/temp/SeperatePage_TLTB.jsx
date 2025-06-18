@@ -30,15 +30,15 @@ const SeperatePage_TLTB = ({ prop, children = [], onSizeChange }) => {
                 {leftChild || <Text>L_Bottom</Text>}
             </Splitter.Panel>
             <Splitter.Panel min = '200'>
-            <Splitter className = 'bottomSplitter' layout = 'vertical'>
+            <Splitter className = 'bottomSplitter non-resizable' layout = 'vertical'>
                 <Splitter.Panel
                                 className="rightTopPanel"
-                                 size='100' style={{ overflow: 'hidden' }}>
+                                 size='100' style={{ overflow: 'hidden',margin : '10px'  }}>
                     {rightTopChild || <Text>R_Top</Text>}
                 </Splitter.Panel>
                 <Splitter.Panel resizable =  {false}
-                                className="rightBottomPanel"
-                                size='50%' style={{ overflow: 'hidden' }}>
+                                className='rightBottomPanel'
+                                size='50%' style={{ overflow: 'hidden'}}>
                     {rightBottomChild || <Text>R_Bottom</Text>}
                 </Splitter.Panel>
             </Splitter>
