@@ -41,5 +41,10 @@ tr[data-row-key]:nth-child(odd) {
   background : #79c3ff !important;
 }
 
-
+.ant-splitter:not(.non-resizable) >.ant-splitter-bar .ant-splitter-bar-dragger:hover:not(.ant-splitter-bar-dragger-active)::before {
+    background: #d8225f;
+}
+.ant-splitter-vertical:not(.non-resizable) >.ant-splitter-bar .ant-splitter-bar-dragger::before{
+  height : 10px;
+}
 /*********************************  Table CSS *********************************/
