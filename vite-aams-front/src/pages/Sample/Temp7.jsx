@@ -51,7 +51,7 @@ const Temp7 = ({props}) => {
       <SeperatePage_TLTB  onSizeChange={handleSplitter} >
         <SampleTable3 size={topPanelSize} /*prop={sample2}*//>
          <SampleTable2 size={bottomLeftPanelSize} /*prop={sample1} *//>
-        <TextArea rows={5}/>
+        <TextArea autoSize={{ minRows: 5, maxRows: 5 }}/>
         <SampleTable3 size={rightBottomPanelSize} /*prop={sample1} *//>
       </SeperatePage_TLTB>
   );
