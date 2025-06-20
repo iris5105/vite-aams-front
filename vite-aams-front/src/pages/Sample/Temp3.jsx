@@ -6,6 +6,7 @@ import SampleTable1 from '../../components/table/SampleTable1';
 import SampleTable2 from '../../components/table/SampleTable2';
 import { ssrModuleExportsKey } from 'vite/module-runner';
 
+
 const Temp3 = () => {
   // const [sample1, sample2] = props;
   const [sizeArr, setSizeArr] = useState([50, 50]); // 초기 비율 50:50
@@ -38,11 +39,15 @@ const Temp3 = () => {
   }, [sizeArr,window.innerHeight]);
   
   return (
+    <>
+      <Basicbutton/>
+
       <SeperatePage_LTB onSizeChange={handleSplitter}>
         <SampleTable1 size={leftPanelSize} /*prop={sample1}*//>
         <Basicbutton size={topPanelSize} />
         <SampleTable2 size={bottomPanelSize} /* prop={sample2}*//>
       </SeperatePage_LTB>
+    </>
   );
 };
 
