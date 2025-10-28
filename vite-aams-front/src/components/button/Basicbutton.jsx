@@ -1,60 +1,64 @@
 import React from 'react'
 import { Flex, Button } from 'antd';
-const userAuthority = [
-    {   key : 'refresh',
-      value : 1
-    },
-    {   key : 'search',
-      value : 0
-    },
-    {   key : 'add',
-      value : 1
-    },
-    {   key : 'copy',
-      value : 0
-    },
-    {   key : 'delete',
-      value : 0
-    },
-    {   key : 'save',
-      value : 0
-    },
-    {   key : 'print',
-      value : 1
-    },
-    {   key : 'excel',
-      value : 1
-    }    
-    // 1,0,1,0,0,0,1,1
-]
+// const userAuthority = [
+//     {   key : 'refresh',
+//       value : 1
+//     },
+//     {   key : 'search',
+//       value : 0
+//     },
+//     {   key : 'add',
+//       value : 1
+//     },
+//     {   key : 'copy',
+//       value : 0
+//     },
+//     {   key : 'delete',
+//       value : 0
+//     },
+//     {   key : 'save',
+//       value : 0
+//     },
+//     {   key : 'print',
+//       value : 1
+//     },
+//     {   key : 'excel',
+//       value : 1
+//     }    
+//     // 1,0,1,0,0,0,1,1
+// ]
 
-const compAuthority = [
-  {   key : 'refresh',
-    value : 1
-  },
-  {   key : 'search',
-    value : 1
-  },
-  {   key : 'add',
-    value : 1
-  },
-  {   key : 'copy',
-    value : 0
-  },
-  {   key : 'delete',
-    value : 1
-  },
-  {   key : 'save',
-    value : 1
-  },
-  {   key : 'print',
-    value : 1
-  },
-  {   key : 'excel',
-    value : 1
-  }    
-  // 1,1,1,0,1,1,1,1
-]
+const userAuthority = [1,1,1,0,0,0,1,1]
+const compAuthority = [1,1,1,0,1,1,1,1]
+
+
+// const compAuthority = [
+//   {   key : 'refresh',
+//     value : 1
+//   },
+//   {   key : 'search',
+//     value : 1
+//   },
+//   {   key : 'add',
+//     value : 1
+//   },
+//   {   key : 'copy',
+//     value : 0
+//   },
+//   {   key : 'delete',
+//     value : 1
+//   },
+//   {   key : 'save',
+//     value : 1
+//   },
+//   {   key : 'print',
+//     value : 1
+//   },
+//   {   key : 'excel',
+//     value : 1
+//   }    
+//   // 1,1,1,0,1,1,1,1
+// ]
 
 
 const ButtonDisplay =[
@@ -106,34 +110,27 @@ const DspBtn = [
 
 
 
-
-function Basicbutton() {
-    // compAuthority와 userAuthority에서 value가 모두 1인 버튼 필터링
-    const buttonsToDisplay = ButtonDisplay.filter((button) => {
-      // ButtonDisplay에서 value가 1인지 확인
-      if (button.value !== 1) return false;
-
-      // userAuthority에서 해당 key의 value 찾기
-      const userAuthItem = userAuthority.find((auth) => auth.key === button.key);
-      // compAuthority에서 해당 key의 value 찾기
-      const compAuthItem = compAuthority.find((auth) => auth.key === button.key);
-
-      // 두 개의 value가 모두 1인지 확인
-      return userAuthItem?.value === 1 && compAuthItem?.value === 1;
+function BaiscButton() {
+  // userAuthority와 compAuthority에서 모두 1인 버튼만 필터링
+  const buttonsToDisplay = ButtonDisplay.filter((button, index) => {
+    // userAuthority와 compAuthority의 동일한 인덱스를 비교
+    return userAuthority[index] === 1 && compAuthority[index] === 1 && button.value === 1;
   });
 
   const handleBtnClick = (value) => {
-      // console.log(value);
+    // 버튼 클릭 시 처리할 로직
+    console.log(value);
   };
-  
-    return (
-      <Flex horizontal="true" gap="small" style={{borderBottom : " 1px solid ", padding : '5px'}}>
-        {buttonsToDisplay.map((button) => (
-          <Button className='CommonBtn' style={{ width : 60}} key={button.key} onClick={()=>handleBtnClick(button.label)}>{button.label}</Button>
-        ))}
-      </Flex>
-    );
-  }
-  
 
-export default Basicbutton
+  return (
+    <Flex horizontal="true" gap="small" style={{ padding: '5px' }}>
+      {buttonsToDisplay.map((button) => (
+        <Button className="CommonBtn" style={{ width: 60 }} key={button.key} onClick={() => handleBtnClick(button.label)}>
+          {button.label}
+        </Button>
+      ))}
+    </Flex>
+  );
+}
+
+export default BaiscButton;
