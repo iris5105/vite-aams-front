@@ -10,3 +10,6 @@ Currently, two official plugins are available:
 
 실행문
 npm run dev
+
+table
+ rowClassName={(_, index) => (index % 2 === 0 ? 'even-row' : 'odd-row')}// 짝수행, 홀수행 구분

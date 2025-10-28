@@ -11,7 +11,7 @@ const SampleTable2 = ({size}) => {
       dataIndex: 'name',
       key: 'name',
       width: 100,
-      fixed: 'left',
+      // fixed: 'left',
       filters: [
         {
           text: 'Joe',
@@ -65,7 +65,7 @@ const SampleTable2 = ({size}) => {
       dataIndex: 'gender',
       key: 'gender',
       width: 80,
-      fixed: 'right',
+      // fixed: 'right',
     },
   ];
   
@@ -73,7 +73,7 @@ const SampleTable2 = ({size}) => {
     length: 100,
   }).map((_, i) => ({
     key: i + 1,
-    name: 'John Brown',
+    name: 'John Brown ' + (i + 1),
     age: i + 1,
     street: 'Lake Park',
     building: 'C',
@@ -82,19 +82,18 @@ const SampleTable2 = ({size}) => {
     companyName: 'SoftLake Co',
     gender: 'M',
   }));
-    const [theaderHeight, setTheaderHeight] = useState(null);       //테이블 헤더 영역
-    const tableRef = useRef(null); // 테이블을 참조할 ref 생성
-    useEffect(() => {
-      setTimeout(() => {
-        if (tableRef.current) {
-          const theader = tableRef.current.querySelector(".ant-table-thead tr"); // tbody의 첫 번째 tr 선택
-          console.log(theader);
-          if (theader) {
-            setTheaderHeight(theader.clientHeight);
-          }
-        }
-      }, 80);
-    }, []);
+     const [theaderHeight, setTheaderHeight] = useState(null);       //테이블 헤더 영역
+        const tableRef = useRef(null); // 테이블을 참조할 ref 생성
+        useEffect(() => {
+          setTimeout(() => {
+            if (tableRef.current) {
+              const theader = tableRef.current.querySelector(".ant-table-thead tr"); // tbody의 첫 번째 tr 선택
+              if (theader) {
+                setTheaderHeight(theader.clientHeight);
+              }
+            }
+          }, 80);
+        }, []);
   return (
     <div ref={tableRef}>
       <Table
@@ -106,6 +105,7 @@ const SampleTable2 = ({size}) => {
           x: 'max-content',
           y: size - theaderHeight, 
         }}
+        rowClassName={(_, index) => (index % 2 === 0 ? 'even-row' : 'odd-row')}// 짝수행, 홀수행 구분
       /> 
     </div>
   );
