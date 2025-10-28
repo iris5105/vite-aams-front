@@ -37,10 +37,17 @@ const DatePresets = [
 //     )
 // }
 
-export function BasicDatePicker() {
+export function BasicDatePicker({date}) {
+
+  const defaultdate = dayjs(date) || dayjs(new Date()); // 기본값 설정
   return (
     <div>
-        <DatePicker presets = {DatePresets} showNow = {false}/>
+        <DatePicker defaultValue={defaultdate}
+                    presets = {DatePresets}
+                    showNow = {false}
+                    format="YYYY-MM-DD"
+                    allowClear={false}
+                    />
     </div>
     
   )

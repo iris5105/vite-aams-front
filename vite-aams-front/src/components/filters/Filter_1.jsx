@@ -24,6 +24,7 @@ export const Filter = () => {
         options={options}
         style={{ width: 200 }}
         optionLabelProp="value"
+        defaultValue={options[0].value}
       />
     </Layout>
   );
