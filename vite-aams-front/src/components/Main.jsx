@@ -45,7 +45,6 @@ const Main = () => {
                         width: '80%',
                       }}
                     >
-
                     <Outlet />
                     </Splitter.Panel>
                   </Splitter>

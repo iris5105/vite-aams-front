@@ -58,44 +58,44 @@ const items = [
     children: [
       {
         key: '1000',
-        label: '시스템 수정 및 개발 의회',
-        value: 'menu'
+        label: '1000 시스템 수정 및 개발 의회',
+        value: 'menu1000'
       },
       {
         type: 'divider'
       },
       {
         key: '1001',
-        label: '회사 기본정보 관리',
-        value: 'menu1'
+        label: '1001 회사 기본정보 관리',
+        value: 'menu1001'
       },
       {
         type: 'divider'
       },
       {
         key: '1010',
-        label: '계좌 관리그룹 등록',
+        label: '1010 계좌 관리그룹 등록',
         value: 'menu2'
       },
       {
         key: '1011',
-        label: '계좌 계약정보 관리',
+        label: '1011 계좌 계약정보 관리',
         value: 'menu3'
       },
       {
         key: '1012',
-        label: '입,출금등록',
+        label: '1012 입,출금등록',
       },
       {
         type: 'divider'
       },
       {
         key: '1021',
-        label: '현금 매입(종목)등록',
+        label: '1021 현금 매입(종목)등록',
       },
       {
         key: '1022',
-        label: '체권 매입등록',
+        label: '1022 체권 매입등록',
       },
     ],
   },
@@ -236,6 +236,7 @@ export default function Sider({contentHeight}) {
         mode="inline"
         style={{
           borderRight: 0,
+          backgroundColor: '#f5f4f4ff',
         }}
         items={renderMenuItems(items)} // items 렌더링
         openKeys={openKeys}

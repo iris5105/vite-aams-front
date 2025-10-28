@@ -13,11 +13,12 @@ const SeperatePage_TBR = ({ children = [], onSizeChange }) => {
   return (
   <Splitter>
     <Splitter.Panel min='100' style={{ overflow: 'hidden' }}>
-        <Splitter layout='vertical' onResize={handleResize} style={{ overflow: 'hidden' }} >
+        <Splitter layout='vertical' onResize={handleResize} >
             <Splitter.Panel
                 className="topPanel"
                 defaultSize={'50%'}
                 min='100'
+                style={{ overflow: 'hidden' }}
                 >
                 {topChild || <Text>Top</Text>}
             </Splitter.Panel>

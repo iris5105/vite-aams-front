@@ -37,8 +37,8 @@ const Temp4 = ({props}) => {
 
   return (
       <SeperatePage_TBR  onSizeChange={handleSplitter} >
-        <SampleTable2 size={topPanelSize} /*prop={sample2}*//>
-         <SampleTable1 size={bottomPanelSize} /*prop={sample1} *//>
+        <SampleTable1 size={topPanelSize} /*prop={sample2}*//>
+         <SampleTable2 size={bottomPanelSize} /*prop={sample1} *//>
         <Basicbutton />
       </SeperatePage_TBR>
   );

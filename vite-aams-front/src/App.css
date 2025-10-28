@@ -22,19 +22,9 @@ body{
   border-bottom : 1px solid #919191 !important;
   
 }
-/* data-row-key 값이 짝수인 경우 */
-tr[data-row-key]:nth-child(even) {
-  background: white; /* 흰색 */
-}
-
-/* data-row-key 값이 홀수인 경우 */
-tr[data-row-key]:nth-child(odd) {
-  background: #d4d4d4 ; /* 연한 회색 */
-}
-
-.ant-table-cell-fix-right,
-.ant-table-cell-fix-left{
-  background : none !important;
+/* 홀수행 배경 회색으로 구분 */
+.ant-table-tbody > tr.ant-table-row.odd-row > td {
+  background-color: #e6e5e5;
 }
 
 .ant-table-cell-row-hover{
@@ -47,4 +37,7 @@ tr[data-row-key]:nth-child(odd) {
 .ant-splitter-vertical:not(.non-resizable) >.ant-splitter-bar .ant-splitter-bar-dragger::before{
   height : 10px;
 }
+
+
+
 /*********************************  Table CSS *********************************/

@@ -1,13 +1,9 @@
-import React,{useState, useEffect} from 'react'
-import { Layout, Input } from 'antd'
-import SampleTable1 from '../../components/table/SampleTable1'
+import {useState, useEffect} from 'react'
+import { Input } from 'antd'
 import SampleTable2 from '../../components/table/SampleTable2';
-import Basicbutton from '../../components/button/Basicbutton';
 
 import SeperatePage_TLTB from '../../temp/SeperatePage_TLTB';
 import SampleTable3 from '../../components/table/SampleTable3';
-
-import SampleTable4 from '../../components/table/SampleTable2';
 
 const {TextArea} = Input;
 
@@ -51,7 +47,7 @@ const Temp7 = ({props}) => {
       <SeperatePage_TLTB  onSizeChange={handleSplitter} >
         <SampleTable3 size={topPanelSize} /*prop={sample2}*//>
          <SampleTable2 size={bottomLeftPanelSize} /*prop={sample1} *//>
-        <TextArea autoSize={{ minRows: 5, maxRows: 5 }}/>
+         <TextArea autoSize={{ minRows: 5, maxRows: 5 }}/>
         <SampleTable3 size={rightBottomPanelSize} /*prop={sample1} *//>
       </SeperatePage_TLTB>
   );

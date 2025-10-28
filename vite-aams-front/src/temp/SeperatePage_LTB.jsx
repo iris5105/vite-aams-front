@@ -6,11 +6,19 @@ const {Text} = Typography;
 // 좌우 분할 후 우측 상하 분할 컴포넌트
 const SeperatePage_LTB = ({ children = [], onSizeChange }) => {
     const [leftChild, topChild, bottomChild] = children;
+    const splitterRef = useRef(null);
     const handleResize = (newSizes) => {
       onSizeChange(newSizes); // 부모 컴포넌트로 크기 변경 값 전달
   };
+    useEffect(() => {
+    if (splitterRef.current) {
+      const height = splitterRef.current.clientHeight;
+      console.log('초기 Splitter height:', height);
+    }
+  }, []);
 
     return (
+    <div ref={splitterRef} style={{ height: '100%' }}>
       <Splitter>
         <Splitter.Panel className="leftPanel" min='100' style={{ overflow: 'hidden' }}>
           {leftChild || <Text>Left</Text>}
@@ -31,6 +39,7 @@ const SeperatePage_LTB = ({ children = [], onSizeChange }) => {
           </Splitter>
         </Splitter.Panel>
       </Splitter>
+    </div>
     );
   };
 
